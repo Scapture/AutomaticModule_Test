@@ -9,6 +9,7 @@ from detection import cutVideo
 from record import *
 from s3Connect import s3_connection
 from config import BUCKET_NAME, SERVER_URL
+import asyncio
 
 app = Flask(__name__)
 
@@ -70,7 +71,7 @@ def on_message(client, userdata, msg):
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.13:554/stream1/out.h265", output_file='./detection/beforeDetection/right.mp4', window_name='Camera 3'),
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.14:554/stream1/out.h265", output_file='./detection/beforeDetection/goalline2.mp4', window_name='Camera 4'),
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.15:554/stream1/out.h265", output_file='./detection/beforeDetection/left2.mp4', window_name='Camera 5'),
-                VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.16:554/stream1/out.h265", output_file='./detection/beforeDetection/right2.mp4', window_name='Camera 6')
+                VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.5:554/stream1/out.h265", output_file='./detection/beforeDetection/right2.mp4', window_name='Camera 6')
             ] 
         start_recording(video_stream_widgets[id], id)
         print(f"Start recording for {id}")
@@ -80,9 +81,10 @@ def on_message(client, userdata, msg):
         client.unsubscribe(id)
         del video_stream_widgets[id]
         print(f"Stop recording for {id}")
-        after_end_video()
+        # after_end_video()
+        asyncio.run(after_end_video())
 
-def after_end_video():
+async def after_end_video():
     # 하이라이트 검출
     video_folder_path = "./detection/beforeDetection"
     video_files = os.listdir(video_folder_path)
