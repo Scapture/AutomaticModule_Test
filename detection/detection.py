@@ -75,7 +75,8 @@ def run(video_file):
         after_change_state +=1
 
         results = model.predict(frame)
-        a = results[0].boxes.boxes
+        # a = results[0].boxes.boxes
+        a = results[0].boxes.data
         px = pd.DataFrame(a).astype("float")
         list = []
         for index, row in px.iterrows():
