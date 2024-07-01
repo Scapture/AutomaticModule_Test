@@ -16,7 +16,8 @@ class VideoStreamWidget(object):
 
         if output_file:
             fourcc = cv2.VideoWriter_fourcc(*'avc1')
-            fps = self.capture.get(cv2.CAP_PROP_FPS)
+            # fps = self.capture.get(cv2.CAP_PROP_FPS)
+            fps = 20
             # self.delay = max(1, int(1000 / fps))
             # self.delay = 1
             width, height = int(self.capture.get(cv2.CAP_PROP_FRAME_WIDTH)), int(self.capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -34,10 +35,10 @@ class VideoStreamWidget(object):
 
             if self.capture.isOpened():
                 ret, frame = self.capture.read()
-                print(frame)
+                # print(frame)
                 if ret:
                     self.frame = frame
-                    print(frame)
+                    # print(frame)
                     if self.output_file:
                         self.video_writer.write(self.frame)
                 else:
@@ -46,6 +47,7 @@ class VideoStreamWidget(object):
                     continue
             
             # time.sleep(self.delay / 1000.0)
+        self.video_writer.release()
 
     def reconnect(self):
         # 여기에 재연결 로직 구현
@@ -95,7 +97,7 @@ def stop_recording(video_stream_widgets, id):
     # if id_str in video_stream_widgets:
     for video_stream in video_stream_widgets:
         video_stream.stop() # 각 비디오 스트림의 녹화 중지
-        video_stream.release_resources()
+        # video_stream.release_resources()
         print(f"{video_stream.window_name}: 녹화 중지")
     # cv2.destroyAllWindows()
         # recording_status[id_str] = "stopped"

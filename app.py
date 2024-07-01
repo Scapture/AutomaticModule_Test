@@ -66,12 +66,12 @@ def on_message(client, userdata, msg):
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@172.27.232.45:9004/stream1/out.h265", output_file='./detection/beforeDetection/goalline3.mp4', window_name='Camera 4'),
 
                 # 로컬 테스트용
-                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.11:554/stream1/out.h265", output_file='./detection/beforeDetection/goalline.mp4', window_name='Camera 1'),
-                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.12:554/stream1/out.h265", output_file='./detection/beforeDetection/left.mp4', window_name='Camera 2'),
-                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.13:554/stream1/out.h265", output_file='./detection/beforeDetection/right.mp4', window_name='Camera 3'),
+                VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.1.2:554/stream1/out.h265", output_file='./detection/beforeDetection/goalline.mp4', window_name='Camera 1'),
+                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.1.4:554/stream1/out.h265", output_file='./detection/beforeDetection/left.mp4', window_name='Camera 2'),
+                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.1.6:554/stream1/out.h265", output_file='./detection/beforeDetection/right.mp4', window_name='Camera 3'),
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.14:554/stream1/out.h265", output_file='./detection/beforeDetection/goalline2.mp4', window_name='Camera 4'),
                 # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.15:554/stream1/out.h265", output_file='./detection/beforeDetection/left2.mp4', window_name='Camera 5'),
-                VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.5:554/stream1/out.h265", output_file='./detection/beforeDetection/right2.mp4', window_name='Camera 6')
+                # VideoStreamWidget(src="rtsp://admin:asdf1346@@192.168.0.5:554/stream1/out.h265", output_file='./detection/beforeDetection/right2.mp4', window_name='Camera 6')
             ] 
         start_recording(video_stream_widgets[id], id)
         print(f"Start recording for {id}")
